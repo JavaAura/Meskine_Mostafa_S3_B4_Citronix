@@ -1,6 +1,6 @@
 package com.brief.citronix.model.entity;
 
-import com.brief.citronix.model.enumeration.Season;
+import com.brief.citronix.model.enums.Season;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

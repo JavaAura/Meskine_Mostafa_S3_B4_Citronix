@@ -5,31 +5,26 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "farms")
+@Table(name = "fields")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Farm {
+public class Field {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
-
-    private String location;
-
     private double area;
 
-    @Temporal(TemporalType.DATE)
-    private LocalDate creationDate;
+    @ManyToOne
+    @JoinColumn(name = "farm_id")
+    private Farm farm;
 
-    @OneToMany(mappedBy = "farm", cascade = CascadeType.ALL)
-    private List<Field> fields = new ArrayList<>();
+    @OneToMany(mappedBy = "field", cascade = CascadeType.ALL)
+    private List<Tree> trees = new ArrayList<>();
 }
-
 

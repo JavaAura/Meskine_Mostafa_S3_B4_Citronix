@@ -10,26 +10,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "farms")
+@Table(name = "trees")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Farm {
+public class Tree {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
-
-    private String location;
-
-    private double area;
-
     @Temporal(TemporalType.DATE)
-    private LocalDate creationDate;
+    private LocalDate plantingDate;
 
-    @OneToMany(mappedBy = "farm", cascade = CascadeType.ALL)
-    private List<Field> fields = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "field_id")
+    private Field field;
+
+    @OneToMany(mappedBy = "tree", cascade = CascadeType.ALL)
+    private List<HarvestDetail> harvestDetails = new ArrayList<>();
 }
-
 

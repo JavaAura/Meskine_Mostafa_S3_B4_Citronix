@@ -29,4 +29,12 @@ public class Farm {
 
     @OneToMany(mappedBy = "farm", cascade = CascadeType.ALL)
     private List<Field> fields = new ArrayList<>();
+
+    @PrePersist
+    @PreUpdate
+    private void validateFieldArea() {
+        if (this.area < 0.2) {
+            throw new IllegalArgumentException("Field area must be greater than 0.2 ha.");
+        }
+    }
 }

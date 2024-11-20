@@ -13,7 +13,7 @@ public record FarmRequestDTO(
         @Size(max = 200, message = "Location must not exceed 200 characters")
         String location,
 
-        @Positive(message = "Area must be a positive number")
+        @Min(value = 0, message = "Farm area must be a positive value.")
         double area,
 
         @FutureOrPresent(message = "creation date must be a present or future date")

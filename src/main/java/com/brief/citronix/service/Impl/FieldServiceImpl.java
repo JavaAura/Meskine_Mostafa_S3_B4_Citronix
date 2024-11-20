@@ -28,8 +28,7 @@ public class FieldServiceImpl implements FieldService {
         Farm farm = farmRepository.findById(fieldRequestDTO.farmId())
                 .orElseThrow(() -> new EntityNotFoundException("Farm with id " + fieldRequestDTO.farmId() + " not found."));
 
-        Field field = new Field();
-        field.setArea(fieldRequestDTO.area());
+        Field field = fieldMapper.toEntity(fieldRequestDTO);
         field.setFarm(farm);
 
         Field savedField = fieldRepository.save(field);

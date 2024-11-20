@@ -30,5 +30,3 @@ public class Farm {
     @OneToMany(mappedBy = "farm", cascade = CascadeType.ALL)
     private List<Field> fields = new ArrayList<>();
 }
-
-

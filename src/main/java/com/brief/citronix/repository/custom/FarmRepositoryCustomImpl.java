@@ -1,4 +1,4 @@
-package com.brief.citronix.repository;
+package com.brief.citronix.repository.custom;
 
 import com.brief.citronix.model.entity.Farm;
 import jakarta.persistence.EntityManager;

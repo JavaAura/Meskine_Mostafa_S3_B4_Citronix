@@ -7,5 +7,4 @@ public record FarmRequestDTO(
         String location,
         double area,
         LocalDate creationDate
-) {
-}
+) {}

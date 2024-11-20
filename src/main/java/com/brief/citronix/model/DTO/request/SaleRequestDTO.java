@@ -5,8 +5,7 @@ import java.time.LocalDate;
 public record SaleRequestDTO(
         LocalDate saleDate,
         double unitPrice,
-        double quantity,
         String client,
+        double quantity,
         Long harvestId
-) {
-}
+) {}

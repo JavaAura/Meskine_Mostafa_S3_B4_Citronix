@@ -6,9 +6,7 @@ public record SaleResponseDTO(
         Long id,
         LocalDate saleDate,
         double unitPrice,
-        double quantity,
         String client,
-        double revenue,
+        double quantity,
         Long harvestId
-) {
-}
+) {}

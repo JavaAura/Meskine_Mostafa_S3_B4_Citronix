@@ -5,5 +5,4 @@ public record HarvestDetailResponseDTO(
         double unitQuantity,
         Long treeId,
         Long harvestId
-) {
-}
+) {}

@@ -3,12 +3,17 @@ package com.brief.citronix.controller;
 import com.brief.citronix.model.DTO.request.FarmRequestDTO;
 import com.brief.citronix.model.DTO.response.FarmResponseDTO;
 import com.brief.citronix.service.Interface.FarmService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/farms")
@@ -18,7 +23,7 @@ public class FarmController {
     private final FarmService farmService;
 
     @PostMapping
-    public ResponseEntity<FarmResponseDTO> createFarm(@RequestBody FarmRequestDTO farmRequestDTO) {
+    public ResponseEntity<FarmResponseDTO> createFarm(@Valid @RequestBody FarmRequestDTO farmRequestDTO) {
         FarmResponseDTO createdFarm = farmService.createFarm(farmRequestDTO);
         return new ResponseEntity<>(createdFarm, HttpStatus.CREATED);
     }
@@ -36,7 +41,7 @@ public class FarmController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<FarmResponseDTO> updateFarm(@PathVariable Long id, @RequestBody FarmRequestDTO farmRequestDTO) {
+    public ResponseEntity<FarmResponseDTO> updateFarm(@Valid @PathVariable Long id, @RequestBody FarmRequestDTO farmRequestDTO) {
         FarmResponseDTO updatedFarm = farmService.updateFarm(id, farmRequestDTO);
         return ResponseEntity.ok(updatedFarm);
     }
@@ -45,5 +50,14 @@ public class FarmController {
     public ResponseEntity<Void> deleteFarm(@PathVariable Long id) {
         farmService.deleteFarm(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<Map<String, String>> handleValidationExceptions(MethodArgumentNotValidException ex) {
+        Map<String, String> errors = new HashMap<>();
+        for (FieldError error : ex.getBindingResult().getFieldErrors()) {
+            errors.put(error.getField(), error.getDefaultMessage());
+        }
+        return ResponseEntity.badRequest().body(errors);
     }
 }

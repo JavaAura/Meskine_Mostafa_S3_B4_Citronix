@@ -25,7 +25,6 @@ public class Farm {
 
     private double area;
 
-    @Temporal(TemporalType.DATE)
     private LocalDate creationDate;
 
     @OneToMany(mappedBy = "farm", cascade = CascadeType.ALL)

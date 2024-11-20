@@ -27,6 +27,10 @@ public class FarmServiceImpl implements FarmService {
         return farmMapper.toDto(savedFarm);
     }
 
+    public List<Farm> searchFarms(String name, String location, Double area) {
+        return farmRepository.searchFarms(name, location, area);
+    }
+
     @Override
     public FarmResponseDTO getFarmById(Long id) {
         Farm farm = farmRepository.findById(id)

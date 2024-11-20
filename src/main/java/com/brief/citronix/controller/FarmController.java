@@ -2,6 +2,7 @@ package com.brief.citronix.controller;
 
 import com.brief.citronix.model.DTO.request.FarmRequestDTO;
 import com.brief.citronix.model.DTO.response.FarmResponseDTO;
+import com.brief.citronix.model.entity.Farm;
 import com.brief.citronix.service.Interface.FarmService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -50,6 +51,15 @@ public class FarmController {
     public ResponseEntity<Void> deleteFarm(@PathVariable Long id) {
         farmService.deleteFarm(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/search")
+    public List<Farm> searchFarms(
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String location,
+            @RequestParam(required = false) Double area
+    ) {
+        return farmService.searchFarms(name, location, area);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)

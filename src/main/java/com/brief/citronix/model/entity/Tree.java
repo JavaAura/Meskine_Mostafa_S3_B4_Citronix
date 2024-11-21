@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.Month;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +46,17 @@ public class Tree {
             return 12;
         } else {
             return 20;
+        }
+    }
+
+    @PrePersist
+    @PreUpdate
+    private void validatePlantingDate() {
+        if (plantingDate != null) {
+            Month plantingMonth = plantingDate.getMonth();
+            if (plantingMonth != Month.MARCH && plantingMonth != Month.APRIL && plantingMonth != Month.MAY) {
+                throw new IllegalArgumentException("Planting date must be within the period of March to May.");
+            }
         }
     }
 }

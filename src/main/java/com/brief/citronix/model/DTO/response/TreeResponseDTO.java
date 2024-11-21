@@ -6,6 +6,8 @@ import java.util.List;
 public record TreeResponseDTO(
         Long id,
         LocalDate plantingDate,
+        int age,
+        int productivity,
         Long fieldId,
         List<Long> harvestDetailIds
 ) {}

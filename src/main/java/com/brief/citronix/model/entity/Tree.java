@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +20,6 @@ public class Tree {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Temporal(TemporalType.DATE)
     private LocalDate plantingDate;
 
     @ManyToOne
@@ -28,5 +28,24 @@ public class Tree {
 
     @OneToMany(mappedBy = "tree", cascade = CascadeType.ALL)
     private List<HarvestDetail> harvestDetails = new ArrayList<>();
+
+    // Calculate age based on the planting date
+    @Transient
+    public int getAge() {
+        return plantingDate != null ? (int) ChronoUnit.YEARS.between(plantingDate, LocalDate.now()) : 0;
+    }
+
+    // Calculate productivity based on the age
+    @Transient
+    public int getProductivity() {
+        int age = getAge();
+        if (age < 3) {
+            return 2;
+        } else if (age <= 10) {
+            return 12;
+        } else {
+            return 20;
+        }
+    }
 }
 

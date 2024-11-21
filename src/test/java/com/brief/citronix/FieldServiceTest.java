@@ -22,7 +22,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-class FieldServiceImplTest {
+class FieldServiceTest {
 
     @Mock
     private FieldRepository fieldRepository;

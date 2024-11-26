@@ -29,5 +29,9 @@ public class Sale {
     @ManyToOne
     @JoinColumn(name = "harvest_id")
     private Harvest harvest;
-}
 
+    @Transient
+    public double getRevenue() {
+        return this.quantity * this.unitPrice;
+    }
+}

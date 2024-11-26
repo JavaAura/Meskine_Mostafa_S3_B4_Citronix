@@ -3,6 +3,7 @@ package com.brief.citronix.controller;
 import com.brief.citronix.model.DTO.request.HarvestDetailRequestDTO;
 import com.brief.citronix.model.DTO.response.HarvestDetailResponseDTO;
 import com.brief.citronix.service.Interface.HarvestDetailService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,7 @@ public class HarvestDetailController {
     private final HarvestDetailService harvestDetailService;
 
     @PostMapping
-    public ResponseEntity<HarvestDetailResponseDTO> createHarvestDetail(@RequestBody HarvestDetailRequestDTO requestDTO) {
+    public ResponseEntity<HarvestDetailResponseDTO> createHarvestDetail(@Valid @RequestBody HarvestDetailRequestDTO requestDTO) {
         return ResponseEntity.status(HttpStatus.CREATED).body(harvestDetailService.createHarvestDetail(requestDTO));
     }
 
@@ -33,7 +34,7 @@ public class HarvestDetailController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<HarvestDetailResponseDTO> updateHarvestDetail(@PathVariable Long id, @RequestBody HarvestDetailRequestDTO requestDTO) {
+    public ResponseEntity<HarvestDetailResponseDTO> updateHarvestDetail(@PathVariable Long id, @Valid @RequestBody HarvestDetailRequestDTO requestDTO) {
         return ResponseEntity.ok(harvestDetailService.updateHarvestDetail(id, requestDTO));
     }
 

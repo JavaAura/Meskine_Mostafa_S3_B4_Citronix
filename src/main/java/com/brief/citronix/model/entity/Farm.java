@@ -33,8 +33,8 @@ public class Farm {
     @PrePersist
     @PreUpdate
     private void validateFieldArea() {
-        if (this.area < 0.2) {
-            throw new IllegalArgumentException("Field area must be greater than 0.2 ha.");
+        if (this.area < 0.1) {
+            throw new IllegalArgumentException("Field area must be greater than 0.1 ha.");
         }
     }
 }

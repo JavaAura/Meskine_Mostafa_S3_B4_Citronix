@@ -8,5 +8,6 @@ public record SaleResponseDTO(
         double unitPrice,
         String client,
         double quantity,
+        double revenue,
         Long harvestId
 ) {}

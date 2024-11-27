@@ -27,6 +27,7 @@ public class Field {
     @OneToMany(mappedBy = "field", cascade = CascadeType.ALL)
     private List<Tree> trees = new ArrayList<>();
 
+    // executes before every save or update
     @PrePersist
     @PreUpdate
     private void validateFieldArea() {

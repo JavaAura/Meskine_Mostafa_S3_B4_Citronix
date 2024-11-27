@@ -19,7 +19,7 @@ public interface FarmMapper {
     @Mapping(target = "fields", ignore = true)
     Farm toEntity(FarmRequestDTO farmDTO);
 
-    @Named("mapFields")  // Annotate the method with @Named
+    @Named("mapFields")
     default List<Long> mapFields(List<Field> fields) {
         return fields == null ? null : fields.stream().map(Field::getId).toList();
     }

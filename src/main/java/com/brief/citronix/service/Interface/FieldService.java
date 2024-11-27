@@ -17,4 +17,3 @@ public interface FieldService {
 
     void deleteField(Long id);
 }
-

@@ -12,4 +12,3 @@ public interface TreeService {
     TreeResponseDTO updateTree(Long id, TreeRequestDTO treeRequestDTO);
     void deleteTree(Long id);
 }
-

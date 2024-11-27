@@ -49,6 +49,7 @@ public class Tree {
         }
     }
 
+    // executes before every save or update of this entity
     @PrePersist
     @PreUpdate
     private void validatePlantingDate() {

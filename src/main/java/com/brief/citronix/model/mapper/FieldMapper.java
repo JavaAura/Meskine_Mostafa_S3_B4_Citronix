@@ -13,18 +13,14 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface FieldMapper {
-
-    // Mapping from Field entity to FieldResponseDTO
-    @Mapping(target = "farmId", source = "farm.id") // Map farm.id to farmId in DTO
-    @Mapping(target = "treeIds", source = "trees", qualifiedByName = "mapTrees") // Map trees to treeIds
+    @Mapping(target = "farmId", source = "farm.id")
+    @Mapping(target = "treeIds", source = "trees", qualifiedByName = "mapTrees")
     FieldResponseDTO toDto(Field field);
 
-    // Mapping from FieldRequestDTO to Field entity
-    @Mapping(target = "farm", source = "farmId", qualifiedByName = "mapFarm") // Map farmId to Farm entity
-    @Mapping(target = "trees", ignore = true) // Ignore trees mapping if not needed
+    @Mapping(target = "farm", source = "farmId", qualifiedByName = "mapFarm")
+    @Mapping(target = "trees", ignore = true)
     Field toEntity(FieldRequestDTO fieldDTO);
 
-    // Convert farmId to Farm entity
     @Named("mapFarm")
     default Farm mapFarm(Long id) {
         if (id == null) return null;
@@ -33,20 +29,8 @@ public interface FieldMapper {
         return farm;
     }
 
-    // Convert List<Tree> to List<Long> (treeIds)
     @Named("mapTrees")
     default List<Long> mapTrees(List<Tree> trees) {
         return trees == null ? null : trees.stream().map(Tree::getId).toList();
     }
-
-//    // Convert List<Long> (treeIds) to List<Tree> entities
-//    @Named("mapTreesToEntities")
-//    default List<Tree> mapTreesToEntities(List<Long> treeIds) {
-//        if (treeIds == null) return null;
-//        return treeIds.stream().map(id -> {
-//            Tree tree = new Tree();
-//            tree.setId(id); // Set ID or fetch from the repository
-//            return tree;
-//        }).toList();
-//    }
 }

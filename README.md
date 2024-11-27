@@ -11,7 +11,7 @@ The primary goal of Citronix is to empower lemon farmers by allowing them to:
 - Manage sales and calculate revenues efficiently.
 
 ## Technologies Used
-- **Java 8**: Core programming language for the application.
+- **Java 17**: Core programming language for the application.
 - **Spring Boot**: Framework for developing the backend.
 - **Spring Data JPA**: For interacting with the database.
 - **PostgreSQL**: Database management system.
@@ -37,7 +37,7 @@ The primary goal of Citronix is to empower lemon farmers by allowing them to:
 ## Installation and Usage
 
 ### Prerequisites
-- **Java 8** or later.
+- **Java 17** or later.
 - **PostgreSQL** installed and running.
 - **Maven** for dependency management and project builds.
 

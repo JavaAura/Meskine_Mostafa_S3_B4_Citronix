@@ -22,6 +22,6 @@ public interface SaleMapper {
         if (id == null) return null;
         Harvest harvest = new Harvest();
         harvest.setId(id);
-        return harvest; // Optional: Add validation or logging if necessary
+        return harvest;
     }
 }

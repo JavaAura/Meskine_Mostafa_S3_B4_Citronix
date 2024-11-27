@@ -25,8 +25,7 @@ public interface TreeMapper {
     @Named("mapField")
     default Field mapField(Long id) {
         if (id == null) {
-            // Optional: Log a warning or handle validation if needed
-            return null;  // or throw new IllegalArgumentException("Field ID cannot be null");
+            return null;
         }
         Field field = new Field();
         field.setId(id);

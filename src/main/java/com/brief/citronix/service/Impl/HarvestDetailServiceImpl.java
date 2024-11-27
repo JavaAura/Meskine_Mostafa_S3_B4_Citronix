@@ -110,6 +110,7 @@ public class HarvestDetailServiceImpl implements HarvestDetailService {
         harvestDetailRepository.deleteById(id);
     }
 
+    // Validate unitQuantity does not exceed tree productivity
     public void updateTotalQuantity(Harvest harvest) {
         double totalHarvestQuantity = harvestDetailRepository.sumUnitQuantityByHarvest(harvest.getId());
         harvest.setTotalQuantity(totalHarvestQuantity);

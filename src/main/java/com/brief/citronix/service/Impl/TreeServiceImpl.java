@@ -10,6 +10,7 @@ import com.brief.citronix.repository.TreeRepository;
 import com.brief.citronix.service.Interface.TreeService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -72,4 +73,3 @@ public class TreeServiceImpl implements TreeService {
         treeRepository.deleteById(id);
     }
 }
-

@@ -12,4 +12,3 @@ public interface HarvestDetailService {
     HarvestDetailResponseDTO updateHarvestDetail(Long id, HarvestDetailRequestDTO harvestDetailRequestDTO);
     void deleteHarvestDetail(Long id);
 }
-

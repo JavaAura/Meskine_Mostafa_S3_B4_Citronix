@@ -18,8 +18,8 @@ public interface HarvestMapper {
     @Mapping(target = "harvestDetailIds", source = "harvestDetails", qualifiedByName = "mapHarvestDetails")
     HarvestResponseDTO toDto(Harvest harvest);
 
-    @Mapping(target = "sales", ignore = true) // Optional: Add logic if you need to map back to Sales
-    @Mapping(target = "harvestDetails", ignore = true) // Optional: Add logic if you need to map back to HarvestDetails
+    @Mapping(target = "sales", ignore = true)
+    @Mapping(target = "harvestDetails", ignore = true)
     Harvest toEntity(HarvestRequestDTO harvestDTO);
 
     @Named("mapSales")
@@ -30,29 +30,5 @@ public interface HarvestMapper {
     @Named("mapHarvestDetails")
     default List<Long> mapHarvestDetails(List<HarvestDetail> harvestDetails) {
         return harvestDetails == null ? null : harvestDetails.stream().map(HarvestDetail::getId).toList();
-    }
-
-    // Optional: If you ever need to map back from IDs to entities
-    @Named("mapSalesToEntities")
-    default List<Sale> mapSalesToEntities(List<Long> saleIds) {
-        if (saleIds == null) return null;
-        // Placeholder for logic to retrieve Sale entities by their IDs
-        // You can implement this by calling a repository to fetch Sale entities by IDs
-        return saleIds.stream().map(id -> {
-            Sale sale = new Sale();
-            sale.setId(id);
-            return sale;
-        }).toList();
-    }
-
-    @Named("mapHarvestDetailsToEntities")
-    default List<HarvestDetail> mapHarvestDetailsToEntities(List<Long> harvestDetailIds) {
-        if (harvestDetailIds == null) return null;
-        // Placeholder for logic to retrieve HarvestDetail entities by their IDs
-        return harvestDetailIds.stream().map(id -> {
-            HarvestDetail harvestDetail = new HarvestDetail();
-            harvestDetail.setId(id);
-            return harvestDetail;
-        }).toList();
     }
 }

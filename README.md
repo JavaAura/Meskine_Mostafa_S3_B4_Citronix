@@ -34,6 +34,9 @@ The primary goal of Citronix is to empower lemon farmers by allowing them to:
 - **Sales Management**: Manage sales, calculate remaining quantities, and dynamically compute revenues.
 - **Productivity Monitoring**: Track the productivity of each tree and identify areas for improvement.
 
+## Diagrams
+- **Use Case Diagram**: ![Use Case Diagram](/project_resources/UML/classDiagram.png)
+
 ## Installation and Usage
 
 ### Prerequisites
@@ -48,3 +51,30 @@ The primary goal of Citronix is to empower lemon farmers by allowing them to:
 1. Clone this repository:
    ```bash
    git clone https://github.com/your-repo/Citronix.git
+   ```
+   
+2. Navigate to the project directory:
+   ```bash
+   cd Citronix
+   ```
+   
+3. Build the project using Maven:
+   ```bash
+   mvn clean install
+   ```
+   
+4. Run the application:
+   ```bash
+   java -jar target/citronix.jar
+   ```
+
+## Project Management
+- [Project Planning in Jira](https://meskinemsoatafa.atlassian.net/jira/software/projects/CT/boards/15/backlog?epics=visible)
+
+## Project Presentation
+- [Canva Presentation](https://www.canva.com/design/DAGXr4W5iv8/_tV43mLmFRBZQDqwBKJDWQ/edit?utm_content=DAGXr4W5iv8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+
+## Author
+- **Meskine Mostafa**
+    - Email: meskinemostafa4@gmail.com
+    - GitHub: [Meskine Mostafa](https://github.com/MesVortex)

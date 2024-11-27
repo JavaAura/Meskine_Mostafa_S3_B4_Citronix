@@ -7,6 +7,7 @@ import com.brief.citronix.model.entity.Farm;
 import com.brief.citronix.model.mapper.FieldMapper;
 import com.brief.citronix.repository.FieldRepository;
 import com.brief.citronix.repository.FarmRepository;
+import com.brief.citronix.service.Impl.FieldServiceImpl;
 import com.brief.citronix.service.Interface.FieldService;
 import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
@@ -34,7 +35,7 @@ class FieldServiceTest {
     private FieldMapper fieldMapper;
 
     @InjectMocks
-    private FieldService fieldService;
+    private FieldServiceImpl fieldService;
 
     @BeforeEach
     void setUp() {
@@ -188,4 +189,3 @@ class FieldServiceTest {
         verify(fieldRepository, never()).deleteById(anyLong());
     }
 }
-
